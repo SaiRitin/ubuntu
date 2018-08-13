@@ -1,0 +1,49 @@
+#! /usr/bin/bash
+
+add() { 
+op="$(expr $1 + $2)";
+#echo "add function called with $1 and $2"
+echo "answer is" ${op}
+}
+
+sub() {
+op="$(expr $1 - $2)";
+#echo "sub function called with $1 and $2"
+echo "answer is ${op}"
+}
+
+mul() {
+op="$(expr $1 \* $2)";
+#echo "mul function called with $1 and $2"
+echo "answer is ${op}"
+}
+div() {
+op="$(expr $1 / $2)";
+#echo "div function called with $1 and $2"
+echo "answer is ${op}"
+}
+if [ "$#" -ne "3" ]; then
+echo "expecting 3 arguments only"
+exit 1
+fi  
+
+operation=$1
+var1=$2
+var2=$3
+re='^[0-9]+$'
+if ! [[ "${var1}"  =~ $re ]] ; then
+   echo "error: ${var1} is not a number" >&2; exit 1
+fi
+
+if ! [[ "${var2}" =~ $re ]] ; then
+   echo "error: ${var2} is not a number" >&2; exit 1
+fi
+
+case $operation in
+ "add") add $var1 $var2 ;;
+ "sub") sub $var1 $var2 ;;
+ "mul") mul $var1 $var2 ;;
+ "div") div $var1 $var2 ;;
+ *) echo "invalid option $operation"; exit 1 ;;
+esac
+
