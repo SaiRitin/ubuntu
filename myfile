@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+# this is acomment
+
+echo hello world
+

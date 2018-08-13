@@ -1,0 +1,22 @@
+#!/bin/bash -xv
+while true; do
+    read -p "first value? " n1
+    read -p "second value? " n2
+    PS3="operation? "
+    select ans in add subtract multiply divide; do
+        case $ans in 
+            add) op=$(expr $n1 + $n2) ; break ;;
+            subtract) op=$(expr $n1 - $n2) ; break ;;
+            multiply) op=$(expr $n1 \* $n2) ; break ;;
+            divide) op=$(expr $n1 / $n2) ; break ;;
+            *) echo "invalid response" ;;
+        esac
+    done
+   #exp =`expr $n1 $op $n2`
+#ans=$(echo "$n1 $op $n2" | bc -l)
+#ans=$(echo "$expr")
+#    ans=$(expr $n1 $op $n2)
+ #   printf "%s %s %s = %s\n\n" "$n1" "$op" "$n2" "$ans"
+#ans='echo $(op)'
+echo "answer is ${op}"
+done

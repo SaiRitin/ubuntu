@@ -1,0 +1,30 @@
+#! /usr/bin/bash
+
+#read -p "Enter full name: " fname lname
+no_of_args=$#
+
+if [ "$no_of_args" != "2" ]; then
+
+    if [ "${no_of_args}" -lt 2 ]; then
+        echo " you have passed less than 2 arguments, it needs 2 aruguments"
+    else
+        echo "more than two arguments not allowed"
+    fi
+
+echo "help: ${0} <first name> <last name>"
+exit 1
+fi
+
+fname=$1
+
+lname=$2
+
+echo "hello ${fname} ${lname}"
+
+echo "hello $*"
+
+for item in $@
+do
+echo "printing set of strings"
+echo ${item}
+done

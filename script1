@@ -1,0 +1,16 @@
+#! /usr/bin/bash
+
+if [ "$#" != "3" ] ; then
+echo "invalid arguments passed, expected 3 arguments"
+exit 1
+fi
+
+file="$1"
+word="$2"
+replace="$3"
+rm -rf ${file}_update
+echo " executing sed 's/${word}/${replace}/g' ${file} > ${file}_update"
+cat ${file} | sed 's/${word}/${replace}/g' > ${file}_update
+
+echo "sucessfully updated file ${file}_update"
+exit 0
